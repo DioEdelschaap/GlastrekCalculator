@@ -148,13 +148,18 @@
             }
 
             const aGlastrek = aKoppen * aKgPerUurPerKop * 24 / 1000; // ton/dag
+            const aKgPerMin = aKoppen * aKgPerUurPerKop / 60; // kg/min
+
             const cdfGlastrek = cdfKoppen * cdfKgPerUurPerKop * 24 / 1000; // ton/dag
+            const cdfKgPerMin = cdfKoppen * cdfKgPerUurPerKop / 60; // kg/min
+
             const totaalGlastrek = aGlastrek + cdfGlastrek;
 
-            document.getElementById('a-result').innerText = `A-Lijn Glastrek: ${aGlastrek.toFixed(1)} ton/dag`;
-            document.getElementById('cdf-result').innerText = `CDF-Lijn Glastrek: ${cdfGlastrek.toFixed(1)} ton/dag`;
+            document.getElementById('a-result').innerText = `A-Lijn Glastrek: ${aGlastrek.toFixed(1)} ton/dag (${aKgPerMin.toFixed(1)} kg/min)`;
+            document.getElementById('cdf-result').innerText = `CDF-Lijn Glastrek: ${cdfGlastrek.toFixed(1)} ton/dag (${cdfKgPerMin.toFixed(1)} kg/min)`;
             document.getElementById('totaal-result').innerText = `Totale Glastrek: ${totaalGlastrek.toFixed(1)} ton/dag`;
         }
+
 
         function convertTonToKg() {
             const tonPerDag = parseFloat(document.getElementById('ton-dag').value) || 0;
